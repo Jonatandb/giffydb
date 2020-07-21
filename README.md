@@ -1,6 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+---
+---
 
-## Available Scripts
+---
+
+Proyecto creado siguiendo esta serie de videos -> [Curso gratis de ReactJS 2020 con clases en vivo](https://midu.dev/curso-gratis-react-2020/) ([Lista en Youtube](https://www.youtube.com/playlist?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC)),
+de este grande del desarrollo -> **Midudev** (Miguel Ángel Durán: [Blog](https://midu.dev/), [Youtube](https://www.youtube.com/channel/UC8LeXCWOalN8SxlrPcG-PaQ), [Twitter](https://twitter.com/midudev), [Instagram](https://www.instagram.com/midu.dev/)
+
+---
+
+---
+
+# Giffydb - Acerca de este proyecto:
+
+Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/).
+
+---
+
+---
+
+## Run
 
 In the project directory, you can run:
 
@@ -12,30 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
 ## Learn More
 
@@ -43,26 +39,21 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Mis notas
 
-### Analyzing the Bundle Size
+### Depuración
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Desarrollo con [VSCode](https://code.visualstudio.com/), el cual me permite depurar la aplicación presionando la tecla F5 (la primera vez que se hace esto se crea un archivo llamado "launch.json" en la carpeta ".vscode", donde se debe especificar junto a la url _localhost_ el puerto en el que está corriendo la aplicación, _la cual previamente inicié ejecutando yarn start_, y que por defecto es el 3000.
 
-### Making a Progressive Web App
+- Esta depuración se inicia en una ventana de Chrome limpia de extensiones, que se ejecuta extremadamente rápido y permite que se utilicen breakpoints establecidos desde VSCode así como también consultar fácilmente la pila de llamadas, las variables globales y mucho más.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- En esta ventana de Chrome instalé las extensiones [React Developer Tools
+  ](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) y [Redux DevTools extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
-### Advanced Configuration
+### Giphy API Explorer
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- https://developers.giphy.com/explorer
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+---
