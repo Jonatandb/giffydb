@@ -5,7 +5,7 @@
 ---
 
 Proyecto creado siguiendo esta serie de videos -> [Curso gratis de ReactJS 2020 con clases en vivo](https://midu.dev/curso-gratis-react-2020/) ([Lista en Youtube](https://www.youtube.com/playlist?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC)),
-de este grande del desarrollo -> **Midudev** (Miguel Ángel Durán: [Blog](https://midu.dev/), [Youtube](https://www.youtube.com/channel/UC8LeXCWOalN8SxlrPcG-PaQ), [Twitter](https://twitter.com/midudev), [Instagram](https://www.instagram.com/midu.dev/)
+de este grande del desarrollo frontend -> **Midudev** (Miguel Ángel Durán: [Blog](https://midu.dev/), [Youtube](https://www.youtube.com/channel/UC8LeXCWOalN8SxlrPcG-PaQ), [Twitter](https://twitter.com/midudev), [Instagram](https://www.instagram.com/midu.dev/)
 
 ---
 
@@ -55,5 +55,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### Giphy API Explorer
 
 - https://developers.giphy.com/explorer
+
+### Paquetes NPM interesantes
+
+- [unfetch](https://www.npmjs.com/package/unfetch) (Recomendado para cuando un navegador no provee nativamente el uso de fetch por medio de su, seguramente desactualizada, API)
 
 ---
