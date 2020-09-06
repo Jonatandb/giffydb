@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-import Gif from './components/Gif'
-
 import './App.css'
 
 import getGifs from './services'
+
+import ListOfGifs from './components/ListOfGifs'
 
 function App() {
   const [gifs, setGifs] = useState([])
 
   useEffect(() => {
-    getGifs({ keyword: 'matrix' }).then(gifs => {
+    getGifs({ keyword: 'messi' }).then(gifs => {
       setGifs(gifs)
     })
   }, [])
@@ -19,9 +19,7 @@ function App() {
     <div className='App'>
       <section className='App-content'>
         <span>Jonatandb 2020</span>
-        {gifs.map(({ id, url, title }) => (
-          <Gif key={id} id={id} url={url} title={title} />
-        ))}
+        <ListOfGifs gifs={gifs} />
       </section>
     </div>
   )
