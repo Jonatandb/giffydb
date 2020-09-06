@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import Gif from './components/Gif'
+
 import './App.css'
 
 import getGifs from './services'
@@ -17,8 +19,8 @@ function App() {
     <div className='App'>
       <section className='App-content'>
         <span>Jonatandb 2020</span>
-        {gifs.map(gif => (
-          <img key={gif.id} src={gif.url} alt={gif.title} />
+        {gifs.map(({ id, url, title }) => (
+          <Gif key={id} id={id} url={url} title={title} />
         ))}
       </section>
     </div>
