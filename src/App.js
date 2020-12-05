@@ -1,20 +1,32 @@
 import React from 'react'
-import { Route, Link } from 'wouter'
 import './App.css'
-import ListOfGifs from './components/ListOfGifs'
+import Home from './pages/Home'
+import SearchResults from './pages/SearchResults'
+import Detail from './pages/Detail'
 
-function App() {
+import { Route, Link } from 'wouter'
+
+export default function App() {
   return (
     <div className='App'>
       <section className='App-content'>
-        <span>Jonatandb 2020</span>
-        <Link to='/gif/panda'>Gifs de pandas</Link>
-        <Link to='/gif/programming'>Gifs de programación</Link>
-        <Link to='/gif/messi'>Gifs de Messi</Link>
-        <Route component={ListOfGifs} path='/gif/:keyword' />
+        <Link to='/'>
+          <img className='App-logo' alt='GiffyDb logo' src='/logo.png' />
+        </Link>
+
+        <Route
+          component={Home}
+          path='/'
+        />
+        <Route
+          component={SearchResults}
+          path='/search/:keyword'
+        />
+        <Route
+          component={Detail}
+          path="/gif/:id"
+        />
       </section>
     </div>
   )
 }
-
-export default App
