@@ -4,8 +4,9 @@
 
 .App-logo {
   object-fit: contain;
-  height: 250px;
+  height: 100px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .App-title {
