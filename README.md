@@ -17,6 +17,30 @@ Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/
 
 ## Visited sites:
 
+### Hiding API Keys in Your Code
+
+- https://dev.to/ivana_croxcatto/hiding-api-keys-in-your-code-1h0a
+
+### Hiding Secret Keys in Create-React-App
+
+- https://www.pluralsight.com/guides/hiding-secret-keys-in-create-react-app
+
+### How do I hide API key in create-react-app?
+
+- https://stackoverflow.com/questions/48699820/how-do-i-hide-api-key-in-create-react-app
+
+### How to hide your API keys in React.
+
+- https://dev.to/thepuskar/how-to-hide-your-api-keys-in-react-4k55
+
+### CRA - Injecting Data from the Server into the Page
+
+- https://create-react-app.dev/docs/title-and-meta-tags/#injecting-data-from-the-server-into-the-page
+
+### CRA - Adding Custom Environment Variables
+
+- https://create-react-app.dev/docs/adding-custom-environment-variables/
+
 ### CRA - Using the Public Folder
 
 - https://create-react-app.dev/docs/using-the-public-folder/
