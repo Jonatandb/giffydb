@@ -2,8 +2,6 @@
 ---
 ---
 
----
-
 Proyecto creado siguiendo esta serie de videos -> [Curso gratis de ReactJS 2020 con clases en vivo](https://midu.dev/curso-gratis-react-2020/) ([Lista en Youtube](https://www.youtube.com/playlist?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC)),
 de este grande del desarrollo frontend -> **Midudev** (Miguel Ángel Durán: [Blog](https://midu.dev/), [Youtube](https://www.youtube.com/channel/UC8LeXCWOalN8SxlrPcG-PaQ), [Twitter](https://twitter.com/midudev), [Instagram](https://www.instagram.com/midu.dev/))
 
@@ -14,6 +12,20 @@ de este grande del desarrollo frontend -> **Midudev** (Miguel Ángel Durán: [Bl
 # Giffydb - Acerca de este proyecto:
 
 Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/).
+
+---
+
+## Visited sites:
+
+### Add a web app manifest with Create React App
+
+- https://web.dev/add-manifest-react/
+
+### favicon.ico Generator
+
+- https://www.favicon.cc/
+
+---
 
 ---
 
