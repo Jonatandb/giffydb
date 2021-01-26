@@ -17,6 +17,10 @@ Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/
 
 ## Visited sites:
 
+### CRA - Using the Public Folder
+
+- https://create-react-app.dev/docs/using-the-public-folder/
+
 ### Add a web app manifest with Create React App
 
 - https://web.dev/add-manifest-react/
