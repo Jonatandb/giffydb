@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/giffydb/static/css/main.47ce03f3.chunk.css",
-    "main.js": "/giffydb/static/js/main.de12e268.chunk.js",
-    "main.js.map": "/giffydb/static/js/main.de12e268.chunk.js.map",
+    "main.js": "/giffydb/static/js/main.ebda90b9.chunk.js",
+    "main.js.map": "/giffydb/static/js/main.ebda90b9.chunk.js.map",
     "runtime-main.js": "/giffydb/static/js/runtime-main.1ce528f6.js",
     "runtime-main.js.map": "/giffydb/static/js/runtime-main.1ce528f6.js.map",
     "static/js/2.6226e685.chunk.js": "/giffydb/static/js/2.6226e685.chunk.js",
     "static/js/2.6226e685.chunk.js.map": "/giffydb/static/js/2.6226e685.chunk.js.map",
     "index.html": "/giffydb/index.html",
-    "precache-manifest.661e0c6e8263bc3ed7b0645a5d3dab2d.js": "/giffydb/precache-manifest.661e0c6e8263bc3ed7b0645a5d3dab2d.js",
+    "precache-manifest.cf3db8949b51c37ea3173057ae74bdf1.js": "/giffydb/precache-manifest.cf3db8949b51c37ea3173057ae74bdf1.js",
     "service-worker.js": "/giffydb/service-worker.js",
     "static/css/main.47ce03f3.chunk.css.map": "/giffydb/static/css/main.47ce03f3.chunk.css.map",
     "static/js/2.6226e685.chunk.js.LICENSE.txt": "/giffydb/static/js/2.6226e685.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1ce528f6.js",
     "static/js/2.6226e685.chunk.js",
     "static/css/main.47ce03f3.chunk.css",
-    "static/js/main.de12e268.chunk.js"
+    "static/js/main.ebda90b9.chunk.js"
   ]
 }
