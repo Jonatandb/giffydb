@@ -1,8 +1,8 @@
 const fromApiResponseToGifs = apiResponse => {
   const { data = [] } = apiResponse
   if (Array.isArray(data)) {
-    const gifs = data.map(image => {
-      const { images, title, id } = image
+    const gifs = data.map(gif => {
+      const { images, title, id } = gif
       const { url } = images.downsized_medium
       return { id, title, url }
     })
@@ -14,7 +14,6 @@ const fromApiResponseToGifs = apiResponse => {
 
 export default function getGifs({ limit = 20, keyword = 'panda' } = {}) {
   const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=es`
-
   return fetch(API_URL)
     .then(res => res.json())
     .then(fromApiResponseToGifs)

@@ -6,19 +6,16 @@ export default function useGifs({ keyword } = { keyword: null }) {
     const [loading, setLoading] = useState(false)
     const { gifs, setGifs } = useContext(GifsContext)
 
-    useEffect(function () {
+    useEffect(() => {
         setLoading(true)
-
-        // recupero la keyword de localStorage
         const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'random'
-
         getGifs({ keyword: keywordToUse })
-            .then(gettedGifs => {
+            .then(newGifs => {
                 setLoading(false)
-                setGifs(gettedGifs)
-                // guardado de keyword en localStorage
+                setGifs(newGifs)
                 localStorage.setItem('lastKeyword', keywordToUse)
             })
     }, [keyword, setGifs])
+
     return { loading, gifs }
 }
