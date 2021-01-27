@@ -3,10 +3,10 @@
 }
 
 .App-logo {
+  cursor: pointer;
   margin: 10px auto;
   padding: 20px 0;
   width: 244px;
-  cursor: pointer;
 }
 
 .App-logo img {
@@ -30,9 +30,9 @@
 }
 
 .App-main {
-  display: flex;
-  flex-direction: column-reverse;
   align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-results {
@@ -40,6 +40,7 @@
 }
 
 .App-category {
+  margin-bottom: 25px;
   width: 100%;
 }
 

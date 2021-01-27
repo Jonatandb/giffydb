@@ -45,10 +45,16 @@ export default function Home() {
           <h3 className="App-title">Última búsqueda</h3>
           <ListOfGifs gifs={gifs} />
         </div>
-        <Category
-          className="App-category"
-          name="Categorías populares"
-          options={POPULAR_GIFS} />
+        <div className="App-category">
+          <Category
+            name="Categorías populares"
+            options={POPULAR_GIFS}
+          />
+          <Category
+            name="Mascotas"
+            options={['Perros', 'Gatos', 'Hamster']}
+          />
+        </div>
       </div>
     </>
   )

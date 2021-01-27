@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'wouter'
 import './styles.css'
 
-export default function Category({ name, options = [] }, { ...props }) {
-    return <div className={props.className}>
+export default function Category({ name, options = [] }) {
+    return <>
         <h3 className="Category-title">{name}</h3>
         <ul className="Category-list">
             {options.map((singleOption) => (
@@ -17,5 +17,5 @@ export default function Category({ name, options = [] }, { ...props }) {
                 </li>
             ))}
         </ul>
-    </div>
+    </>
 }

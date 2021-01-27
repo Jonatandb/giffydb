@@ -17,6 +17,10 @@ Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/
 
 ## Visited sites:
 
+### MDN - Lazy loading
+
+- https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
+
 ### Vercel - Environment Variables
 
 - https://vercel.com/docs/environment-variables
