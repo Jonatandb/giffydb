@@ -12,11 +12,12 @@ export default function App() {
     <div className='App'>
       <section className='App-content'>
         <Link to='/'>
-          <img
-            alt='GiffyDb main logo'
-            className='App-logo'
-            src={process.env.PUBLIC_URL + '/logo.png'}
-          />
+          <figure className="App-logo">
+            <img
+              alt='GiffyDb main logo'
+              src={process.env.PUBLIC_URL + '/logo.png'}
+            />
+          </figure>
         </Link>
         <GifsContextProvider>
           <Route
