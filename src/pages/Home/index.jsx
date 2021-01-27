@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import { useRef } from "react"
+import React, { useState, useRef } from "react"
 import { useLocation } from "wouter"
 import Category from "../../components/Category"
 import ListOfGifs from '../../components/ListOfGifs'
@@ -33,17 +32,24 @@ export default function Home() {
   return (
     <>
       <form onSubmit={handleSumbit}>
+        <button>Buscar</button>
         <input
-          value={keyword}
           onChange={handleChange}
           placeholder="Search a gif here..."
+          ref={searchInputRef}
           type="text"
-          ref={searchInputRef} />
-        <button>Buscar</button>
+          value={keyword} />
       </form>
-      <h3 className="App-title">Última búsqueda</h3>
-      <ListOfGifs gifs={gifs} />
-      <Category name="Categorías populares" options={POPULAR_GIFS} />
+      <div className="App-main">
+        <div className="App-results">
+          <h3 className="App-title">Última búsqueda</h3>
+          <ListOfGifs gifs={gifs} />
+        </div>
+        <Category
+          className="App-category"
+          name="Categorías populares"
+          options={POPULAR_GIFS} />
+      </div>
     </>
   )
 }
