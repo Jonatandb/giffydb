@@ -17,6 +17,10 @@ Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/
 
 ## Visited sites:
 
+### Vercel - Environment Variables
+
+- https://vercel.com/docs/environment-variables
+
 ### Hiding API Keys in Your Code
 
 - https://dev.to/ivana_croxcatto/hiding-api-keys-in-your-code-1h0a
