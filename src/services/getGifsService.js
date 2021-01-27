@@ -1,3 +1,5 @@
+import { API_KEY, API_URL } from "./settings"
+
 const fromApiResponseToGifs = apiResponse => {
   const { data = [] } = apiResponse
   if (Array.isArray(data)) {
@@ -13,8 +15,8 @@ const fromApiResponseToGifs = apiResponse => {
 
 
 export default function getGifs({ limit = 20, keyword = 'panda' } = {}) {
-  const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=es`
-  return fetch(API_URL)
+  const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=es`
+  return fetch(apiURL)
     .then(res => res.json())
     .then(fromApiResponseToGifs)
 }
