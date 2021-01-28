@@ -25,7 +25,7 @@ export default function Home() {
     setKeyword(evt.target.value)
   }
 
-  if (loading) return <Spinner />
+  if (loading || (!loading && !gifs.length)) return <Spinner />
 
   return (
     <>
