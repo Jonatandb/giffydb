@@ -4,11 +4,10 @@ import { Link } from 'wouter'
 import './styles.css'
 
 export default function Category({ name, options = [] }) {
-    if (!options.length) return <Spinner />
-
-    return <Spinner>
+    return <>
         <h3 className="Category-title">{name}</h3>
         <ul className="Category-list">
+            {!options.length && <Spinner />}
             {options.map((singleOption) => (
                 <li key={singleOption}>
                     <Link
@@ -20,5 +19,5 @@ export default function Category({ name, options = [] }) {
                 </li>
             ))}
         </ul>
-    </Spinner>
+    </>
 }
