@@ -25,7 +25,7 @@ export default function Home() {
     setKeyword(evt.target.value)
   }
 
-  if (loading || (!loading && !gifs.length)) return <Spinner />
+  if (loading) return <Spinner />
 
   return (
     <>
@@ -39,10 +39,12 @@ export default function Home() {
           value={keyword} />
       </form>
       <div className="App-main">
-        <div className="App-results">
-          <h3 className="App-title">Última búsqueda</h3>
-          <ListOfGifs gifs={gifs} />
-        </div>
+        {
+          !loading && gifs.length > 0 && <div className="App-results">
+            <h3 className="App-title">Última búsqueda</h3>
+            <ListOfGifs gifs={gifs} />
+          </div>
+        }
         <div className="App-category">
           <TrendingSearches />
         </div>
