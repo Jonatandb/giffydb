@@ -7,7 +7,7 @@ export default function Category({ name, options = [] }) {
     return <>
         <h3 className="Category-title">{name}</h3>
         <ul className="Category-list">
-            {!options.length && <Spinner />}
+            {!options.length && <Spinner centered />}
             {options.map((singleOption) => (
                 <li key={singleOption}>
                     <Link
