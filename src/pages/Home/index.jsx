@@ -1,43 +1,24 @@
-import React, { useState, useRef } from "react"
-import { useLocation } from "wouter"
+import React, { useCallback } from "react"
 import ListOfGifs from 'components/ListOfGifs'
 import Spinner from "components/Spinner"
 import TrendingSearches from "components/TrendingSearches"
 import useGifs from 'hooks/useGifs'
+import SearchForm from "components/SearchForm"
+import { useLocation } from 'wouter'
 
 export default function Home() {
-  const [keyword, setKeyword] = useState('')
-  const [, pushLocation] = useLocation()
   const { gifs, loading } = useGifs()
-  const searchInputRef = useRef()
+  const [, pushLocation] = useLocation()
 
-  const handleSumbit = evt => {
-    evt.preventDefault()
-    if (keyword && keyword.trim()) {
-      pushLocation(`/search/${keyword.trim()}`)
-    } else {
-      searchInputRef.current.select()
-      searchInputRef.current.focus()
-    }
-  }
-
-  const handleChange = evt => {
-    setKeyword(evt.target.value)
-  }
+  const handleSumbit = useCallback(({ keyword }) => {
+    pushLocation(`/search/${keyword.trim()}`)
+  }, [pushLocation])
 
   if (loading) return <Spinner />
 
   return (
     <>
-      <form onSubmit={handleSumbit}>
-        <button>Buscar</button>
-        <input
-          onChange={handleChange}
-          placeholder="Search a gif here..."
-          ref={searchInputRef}
-          type="text"
-          value={keyword} />
-      </form>
+      <SearchForm onSubmit={handleSumbit} />
       <div className="App-main">
         {
           !loading && gifs.length > 0 && <div className="App-results">

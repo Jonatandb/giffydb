@@ -1,39 +1,42 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import './App.css'
-import Home from './pages/Home'
-import SearchResults from './pages/SearchResults'
-import Detail from './pages/Detail'
 
 import { Route, Link } from 'wouter'
 import { GifsContextProvider } from './context/GifsContext'
 
+const HomeComponent = React.lazy(() => import('./pages/Home'))
+const SearchResultsComponent = React.lazy(() => import('./pages/SearchResults'))
+const DetailComponent = React.lazy(() => import('./pages/Detail'))
+
 export default function App() {
   return (
-    <div className='App'>
-      <section className='App-content'>
-        <Link to='/'>
-          <figure className="App-logo">
-            <img
-              alt='GiffyDb main logo'
-              src={process.env.PUBLIC_URL + '/logo.png'}
+    <Suspense fallback={null}>
+      <div className='App'>
+        <section className='App-content'>
+          <Link to='/'>
+            <figure className="App-logo">
+              <img
+                alt='GiffyDb main logo'
+                src={process.env.PUBLIC_URL + '/logo.png'}
+              />
+            </figure>
+          </Link>
+          <GifsContextProvider>
+            <Route
+              component={HomeComponent}
+              path='/'
             />
-          </figure>
-        </Link>
-        <GifsContextProvider>
-          <Route
-            component={Home}
-            path='/'
-          />
-          <Route
-            component={SearchResults}
-            path='/search/:keyword'
-          />
-          <Route
-            component={Detail}
-            path="/gif/:id"
-          />
-        </GifsContextProvider>
-      </section>
-    </div>
+            <Route
+              component={SearchResultsComponent}
+              path='/search/:keyword'
+            />
+            <Route
+              component={DetailComponent}
+              path="/gif/:id"
+            />
+          </GifsContextProvider>
+        </section>
+      </div>
+    </Suspense>
   )
 }

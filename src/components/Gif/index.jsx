@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'wouter'
 import './styles.css'
 
-export default function Gif({ id, url, title }) {
+function Gif({ id, url, title }) {
   return (
     <div className="Gif">
       <Link to={`/gif/${id}`} className='Gif-link'>
@@ -12,3 +12,5 @@ export default function Gif({ id, url, title }) {
     </div>
   )
 }
+
+export default React.memo(Gif)
