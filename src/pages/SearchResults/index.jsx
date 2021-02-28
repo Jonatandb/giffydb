@@ -4,6 +4,7 @@ import ListOfGifs from 'components/ListOfGifs'
 import useGifs from 'hooks/useGifs'
 import useNearScreen from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
+import useSEO from 'hooks/useSEO'
 
 export default function SearchResults({ params }) {
   const { keyword } = params
@@ -11,7 +12,11 @@ export default function SearchResults({ params }) {
   const ref = useRef()
   const { isNearScreen } = useNearScreen({ externalRef: loading ? null : ref, once: false })
 
-  const debouncedHandleNextPage = useCallback(() => debounce(setPage(currentPage => currentPage + 1), 1000), [setPage])
+  const debouncedHandleNextPage = useCallback(() => debounce(setPage(currentPage => currentPage + 1), 1000), [setPage], [])
+
+  const title = gifs ? `${gifs.length} results of ${keyword}` : ''
+
+  useSEO({ title })
 
   useEffect(() => {
     if (isNearScreen) {
