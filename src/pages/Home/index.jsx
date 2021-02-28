@@ -5,6 +5,7 @@ import TrendingSearches from "components/TrendingSearches"
 import useGifs from 'hooks/useGifs'
 import SearchForm from "components/SearchForm"
 import { useLocation } from 'wouter'
+import { Helmet } from 'react-helmet'
 
 export default function Home() {
   const { gifs, loading } = useGifs()
@@ -14,10 +15,24 @@ export default function Home() {
     pushLocation(`/search/${keyword.trim()}`)
   }, [pushLocation])
 
-  if (loading) return <Spinner />
+  if (loading) {
+    return (
+      <>
+        <Helmet>
+          <title>Cargando... | GiffyDb | Searching gifs by Jonatandb</title>
+          <meta name="description" content="GiffyDb | Searching gifs by Jonatandb" />
+        </Helmet>
+        <Spinner />
+      </>
+    )
+  }
 
   return (
     <>
+      <Helmet>
+        <title>Home | GiffyDb | Searching gifs by Jonatandb</title>
+        <meta name="description" content="GiffyDb | Searching gifs by Jonatandb" />
+      </Helmet>
       <SearchForm onSubmit={handleSumbit} />
       <div className="App-main">
         {
