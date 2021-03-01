@@ -28,7 +28,7 @@ export default function App() {
             />
             <Route
               component={SearchResultsComponent}
-              path='/search/:keyword'
+              path='/search/:keyword/:rating?'
             />
             <Route
               component={DetailComponent}

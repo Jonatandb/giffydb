@@ -29,7 +29,7 @@ export default function Detail({ params }) {
     return <>
         <Helmet>
             <title>{`${title} | GiffyDb`}</title>
-            <meta name="description" content={decodeURI(title)} />
+            <meta name="description" content={decodeURIComponent(title)} />
         </Helmet>
         <h3 className="App-title">{gif.title}</h3>
         <Gif {...gif} />

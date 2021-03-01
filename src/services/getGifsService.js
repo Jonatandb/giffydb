@@ -14,9 +14,9 @@ const fromApiResponseToGifs = apiResponse => {
 }
 
 
-export default function getGifs({ page = 0, limit, keyword = 'love' } = {}) {
+export default function getGifs({ page = 0, limit, keyword = 'scarlett johansson redhead', rating = 'g' } = {}) {
   const limitToUse = limit || DEFAULT_AMOUNT_GIFS_TO_GET || 5
-  const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limitToUse}&offset=${page * limitToUse}&rating=g&lang=en`
+  const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limitToUse}&offset=${page * limitToUse}&rating=${rating}&lang=en`
 
   return fetch(apiURL)
     .then(res => res.json())

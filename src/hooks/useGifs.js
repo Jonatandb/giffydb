@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import getGifsService from 'services/getGifsService'
 import GifsContext from 'context/GifsContext'
 
-export default function useGifs({ keyword } = { keyword: null }) {
+export default function useGifs({ keyword, rating } = { keyword: null }) {
     const [loading, setLoading] = useState(false)
     const [loadingNextPage, setLoadingNextPage] = useState(false)
     const [page, setPage] = useState(0)
@@ -11,7 +11,7 @@ export default function useGifs({ keyword } = { keyword: null }) {
 
     useEffect(() => {
         setLoading(true)
-        getGifsService({ keyword: keywordToUse })
+        getGifsService({ keyword: keywordToUse, rating })
             .then(newGifs => {
                 setLoading(false)
                 setGifs(newGifs)
@@ -21,12 +21,12 @@ export default function useGifs({ keyword } = { keyword: null }) {
                 console.log('Error getting gifs:', err)
                 setLoading(false)
             })
-    }, [keywordToUse, setGifs])
+    }, [keywordToUse, setGifs, rating])
 
     useEffect(() => {
         if (page === 0) return
         setLoadingNextPage(true)
-        getGifsService({ keyword: keywordToUse, page })
+        getGifsService({ keyword: keywordToUse, page, rating })
             .then(nextPageGifs => {
                 setLoadingNextPage(false)
                 setGifs(prevGifs => prevGifs.concat(nextPageGifs))
@@ -35,7 +35,7 @@ export default function useGifs({ keyword } = { keyword: null }) {
                 console.log('Error getting next page of gifs:', err)
                 setLoadingNextPage(false)
             })
-    }, [keywordToUse, page, setGifs])
+    }, [keywordToUse, page, setGifs, rating])
 
     return { loading, loadingNextPage, gifs, setPage }
 }

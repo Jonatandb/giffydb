@@ -8,14 +8,14 @@ import { Helmet } from 'react-helmet'
 import SearchForm from '../../components/SearchForm'
 
 export default function SearchResults({ params }) {
-  const { keyword } = params
-  const { loading, gifs, setPage } = useGifs({ keyword })
+  const { keyword, rating = 'g' } = params
+  const { loading, gifs, setPage } = useGifs({ keyword, rating })
   const ref = useRef()
   const { isNearScreen } = useNearScreen({ externalRef: loading ? null : ref, once: false })
 
   const debouncedHandleNextPage = useCallback(() => debounce(setPage(currentPage => currentPage + 1), 1000), [setPage], [])
 
-  const title = gifs ? `${gifs.length} results of ${decodeURI(keyword)} | GiffyDb | Searching gifs by Jonatandb` : 'GiffyDb | Searching gifs by Jonatandb'
+  const title = gifs ? `${gifs.length} results of ${decodeURIComponent(keyword)} | GiffyDb | Searching gifs by Jonatandb` : 'GiffyDb | Searching gifs by Jonatandb'
 
   useEffect(() => {
     if (isNearScreen) {
@@ -38,10 +38,10 @@ export default function SearchResults({ params }) {
   return <>
     <Helmet>
       <title>{title}</title>
-      <meta name="description" content={decodeURI(title)} />
+      <meta name="description" content={decodeURIComponent(title)} />
     </Helmet>
-    <SearchForm />
-    <h3 className="App-title">{decodeURI(keyword)}</h3>
+    <SearchForm initialKeyword={keyword} initialRating={rating} />
+    <h3 className="App-title">{decodeURIComponent(keyword)}</h3>
     <ListOfGifs gifs={gifs} />
     <div ref={ref} id="visor"></div>
   </>
