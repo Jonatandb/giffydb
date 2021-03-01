@@ -14,7 +14,7 @@ export default function Detail({ params }) {
         return (
             <>
                 <Helmet>
-                    <title>Cargando... | GiffyDb | Searching gifs by Jonatandb</title>
+                    <title>Loading... | GiffyDb | Searching gifs by Jonatandb</title>
                     <meta name="description" content="GiffyDb | Searching gifs by Jonatandb" />
                 </Helmet>
                 <Spinner />

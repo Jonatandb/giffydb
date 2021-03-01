@@ -1,26 +1,28 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useCallback } from 'react'
+import { useLocation } from 'wouter'
 
-const SearchForm = React.memo(({ onSubmit }) => {
+const SearchForm = React.memo(() => {
     const [keyword, setKeyword] = useState('')
     const searchInputRef = useRef()
+    const [, pushLocation] = useLocation()
 
-    const handleChange = evt => {
+    const handleChange = useCallback(evt => {
         setKeyword(evt.target.value)
-    }
+    }, [])
 
-    const handleSumbit = evt => {
+    const handleSumbit = useCallback(evt => {
         evt.preventDefault()
         if (keyword && keyword.trim()) {
-            onSubmit({ keyword })
+            pushLocation(`/search/${keyword.trim()}`)
         } else {
             searchInputRef.current.select()
             searchInputRef.current.focus()
         }
-    }
+    }, [keyword, pushLocation])
 
     return (
         <form onSubmit={handleSumbit}>
-            <button>Buscar</button>
+            <button>Search</button>
             <input
                 onChange={handleChange}
                 placeholder="Search a gif here..."
