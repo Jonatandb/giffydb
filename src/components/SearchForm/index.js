@@ -1,20 +1,51 @@
-import React, { useRef, useState, useCallback } from 'react'
+import React, { useRef, useCallback, useReducer } from 'react'
 import { useLocation } from 'wouter'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
+const ACTIONS = {
+    UPDATE_KEYWORD: 'UPDATE_KEYWORD',
+    UPDATE_RATING: 'UPDATE_RATING',
+}
+
+const ACTIONS_REDUCERS = {
+    [ACTIONS.UPDATE_KEYWORD]: (state, action) => ({
+        ...state,
+        keyword: action.payload
+    }),
+    [ACTIONS.UPDATE_RATING]: (state, action) => ({
+        ...state,
+        rating: action.payload
+    })
+}
+
+const reducer = (state, action) => {
+    const actionReducer = ACTIONS_REDUCERS[action.type]
+    return actionReducer ? actionReducer(state, action) : state
+}
+
 const SearchForm = React.memo(({ initialKeyword = '', initialRating }) => {
-    const [keyword, setKeyword] = useState(decodeURIComponent(initialKeyword))
-    const [rating, setRating] = useState(initialRating || RATINGS[0])
+    const [state, dispatch] = useReducer(reducer, {
+        keyword: decodeURIComponent(initialKeyword),
+        rating: initialRating || RATINGS[0]
+    })
     const searchInputRef = useRef()
     const [, pushLocation] = useLocation()
 
+    const { keyword, rating } = state
+
     const handleSearchChange = useCallback(evt => {
-        setKeyword(evt.target.value)
+        dispatch({
+            type: ACTIONS.UPDATE_KEYWORD,
+            payload: evt.target.value
+        })
     }, [])
 
     const handleRatingChange = useCallback(evt => {
-        setRating(evt.target.value)
+        dispatch({
+            type: ACTIONS.UPDATE_RATING,
+            payload: evt.target.value
+        })
     }, [])
 
     const handleSumbit = useCallback(evt => {
@@ -25,7 +56,7 @@ const SearchForm = React.memo(({ initialKeyword = '', initialRating }) => {
             searchInputRef.current.select()
             searchInputRef.current.focus()
         }
-    }, [keyword, pushLocation, rating])
+    }, [keyword, rating, pushLocation])
 
     return (
         <form onSubmit={handleSumbit}>
