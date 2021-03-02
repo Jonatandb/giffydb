@@ -1,76 +1,20 @@
-import React, { useRef, useCallback, useReducer } from 'react'
+import React, { useRef, useCallback } from 'react'
 import { useLocation } from 'wouter'
-
-const RATINGS = ['g', 'pg', 'pg-13', 'r']
-
-const LANGUAGES = ['en', 'es', 'fi', 'ja', 'ru']
-
-const ACTIONS = {
-    UPDATE_KEYWORD: 'UPDATE_KEYWORD',
-    UPDATE_RATING: 'UPDATE_RATING',
-    UPDATE_LANGUAGE: 'UPDATE_LANGUAGE',
-    CLEAR_SEARCH: 'CLEAR_SEARCH'
-}
-
-const ACTIONS_REDUCERS = {
-    [ACTIONS.UPDATE_KEYWORD]: (state, action) => ({
-        ...state,
-        keyword: action.payload
-    }),
-    [ACTIONS.UPDATE_RATING]: (state, action) => ({
-        ...state,
-        rating: action.payload
-    }),
-    [ACTIONS.UPDATE_LANGUAGE]: (state, action) => ({
-        ...state,
-        language: action.payload
-    }),
-    [ACTIONS.CLEAR_SEARCH]: (state, action) => ({
-        keyword: '',
-        rating: RATINGS[0],
-        language: LANGUAGES[0]
-    })
-}
-
-const reducer = (state, action) => {
-    const actionReducer = ACTIONS_REDUCERS[action.type]
-    return actionReducer ? actionReducer(state, action) : state
-}
+import useForm, { LANGUAGES, RATINGS } from './useForm'
 
 const SearchForm = React.memo(({ initialKeyword = '', initialRating, initialLanguage }) => {
 
-    const initialState = {
-        keyword: decodeURIComponent(initialKeyword),
-        rating: initialRating || RATINGS[0],
-        language: initialLanguage || LANGUAGES[0]
-    }
-
-    const [state, dispatch] = useReducer(reducer, initialState)
     const searchInputRef = useRef()
     const [, pushLocation] = useLocation()
+    const { keyword, rating, language, updateKeyword, updateRating, updateLanguage, clearSearch } = useForm({ initialKeyword, initialRating, initialLanguage })
 
-    const { keyword, rating, language } = state
+    const handleSearchChange = e => updateKeyword(e.target.value)
 
-    const handleSearchChange = useCallback(evt => {
-        dispatch({
-            type: ACTIONS.UPDATE_KEYWORD,
-            payload: evt.target.value
-        })
-    }, [])
+    const handleRatingChange = e => updateRating(e.target.value)
 
-    const handleRatingChange = useCallback(evt => {
-        dispatch({
-            type: ACTIONS.UPDATE_RATING,
-            payload: evt.target.value
-        })
-    }, [])
+    const handleLanguageChange = e => updateLanguage(e.target.value)
 
-    const handleLanguageChange = useCallback(evt => {
-        dispatch({
-            type: ACTIONS.UPDATE_LANGUAGE,
-            payload: evt.target.value
-        })
-    }, [])
+    const handleClearSearch = () => clearSearch()
 
     const handleSumbit = useCallback(evt => {
         evt.preventDefault()
@@ -81,12 +25,6 @@ const SearchForm = React.memo(({ initialKeyword = '', initialRating, initialLang
             searchInputRef.current.focus()
         }
     }, [keyword, rating, language, pushLocation])
-
-    const handleClearSearch = useCallback(evt => {
-        dispatch({
-            type: ACTIONS.CLEAR_SEARCH
-        })
-    }, [])
 
     return (
         <form onSubmit={handleSumbit}>
