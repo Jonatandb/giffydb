@@ -8,7 +8,8 @@ const LANGUAGES = ['en', 'es', 'fi', 'ja', 'ru']
 const ACTIONS = {
     UPDATE_KEYWORD: 'UPDATE_KEYWORD',
     UPDATE_RATING: 'UPDATE_RATING',
-    UPDATE_LANGUAGE: 'UPDATE_LANGUAGE'
+    UPDATE_LANGUAGE: 'UPDATE_LANGUAGE',
+    CLEAR_SEARCH: 'CLEAR_SEARCH'
 }
 
 const ACTIONS_REDUCERS = {
@@ -23,6 +24,11 @@ const ACTIONS_REDUCERS = {
     [ACTIONS.UPDATE_LANGUAGE]: (state, action) => ({
         ...state,
         language: action.payload
+    }),
+    [ACTIONS.CLEAR_SEARCH]: (state, action) => ({
+        keyword: '',
+        rating: RATINGS[0],
+        language: LANGUAGES[0]
     })
 }
 
@@ -32,11 +38,14 @@ const reducer = (state, action) => {
 }
 
 const SearchForm = React.memo(({ initialKeyword = '', initialRating, initialLanguage }) => {
-    const [state, dispatch] = useReducer(reducer, {
+
+    const initialState = {
         keyword: decodeURIComponent(initialKeyword),
         rating: initialRating || RATINGS[0],
         language: initialLanguage || LANGUAGES[0]
-    })
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState)
     const searchInputRef = useRef()
     const [, pushLocation] = useLocation()
 
@@ -73,9 +82,15 @@ const SearchForm = React.memo(({ initialKeyword = '', initialRating, initialLang
         }
     }, [keyword, rating, language, pushLocation])
 
+    const handleClearSearch = useCallback(evt => {
+        dispatch({
+            type: ACTIONS.CLEAR_SEARCH
+        })
+    }, [])
+
     return (
         <form onSubmit={handleSumbit}>
-            <button>Search</button>
+            <button onClick={handleSumbit}>Search</button>
             <input
                 onChange={handleSearchChange}
                 placeholder="Search a gif here..."
@@ -94,6 +109,7 @@ const SearchForm = React.memo(({ initialKeyword = '', initialRating, initialLang
                     LANGUAGES.map(language => <option key={language}>{language}</option>)
                 }
             </select>
+            <button onClick={handleClearSearch}>Clear</button>
         </form>
     )
 })
