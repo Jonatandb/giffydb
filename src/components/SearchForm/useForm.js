@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useCallback, useReducer } from "react"
 
 export const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
@@ -52,20 +52,20 @@ export default function useForm({ initialKeyword, initialRating, initialLanguage
         keyword,
         rating,
         language,
-        updateKeyword: keyword => dispatch({
+        updateKeyword: useCallback(keyword => dispatch({
             type: ACTIONS.UPDATE_KEYWORD,
             payload: keyword
-        }),
-        updateRating: rating => dispatch({
+        }), []),
+        updateRating: useCallback(rating => dispatch({
             type: ACTIONS.UPDATE_RATING,
             payload: rating
-        }),
-        updateLanguage: language => dispatch({
+        }), []),
+        updateLanguage: useCallback(language => dispatch({
             type: ACTIONS.UPDATE_LANGUAGE,
             payload: language
-        }),
-        clearSearch: () => dispatch({
+        }), []),
+        clearSearch: useCallback(() => dispatch({
             type: ACTIONS.CLEAR_SEARCH
-        })
+        }), [])
     }
 }
