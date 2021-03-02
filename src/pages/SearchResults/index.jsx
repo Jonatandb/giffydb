@@ -5,17 +5,24 @@ import useGifs from 'hooks/useGifs'
 import useNearScreen from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
 import { Helmet } from 'react-helmet'
-import SearchForm from '../../components/SearchForm'
+import SearchForm from 'components/SearchForm'
 
 export default function SearchResults({ params }) {
-  const { keyword, rating = 'g' } = params
-  const { loading, gifs, setPage } = useGifs({ keyword, rating })
+  const { keyword, rating, language } = params
+  const { loading, gifs, setPage } = useGifs({ keyword, rating, language })
   const ref = useRef()
   const { isNearScreen } = useNearScreen({ externalRef: loading ? null : ref, once: false })
 
-  const debouncedHandleNextPage = useCallback(() => debounce(setPage(currentPage => currentPage + 1), 1000), [setPage], [])
+  const debouncedHandleNextPage = useCallback(
+    () => debounce(
+      setPage(currentPage => currentPage + 1), 1000
+    )
+    , [setPage]
+  )
 
-  const title = gifs ? `${gifs.length} results of ${decodeURIComponent(keyword)} | GiffyDb | Searching gifs by Jonatandb` : 'GiffyDb | Searching gifs by Jonatandb'
+  const title = gifs
+    ? `${gifs.length} results of ${decodeURIComponent(keyword)} | GiffyDb | Searching gifs by Jonatandb`
+    : 'GiffyDb | Searching gifs by Jonatandb'
 
   useEffect(() => {
     if (isNearScreen) {
@@ -40,7 +47,7 @@ export default function SearchResults({ params }) {
       <title>{title}</title>
       <meta name="description" content={decodeURIComponent(title)} />
     </Helmet>
-    <SearchForm initialKeyword={keyword} initialRating={rating} />
+    <SearchForm initialKeyword={keyword} initialRating={rating} initialLanguage={language} />
     <h3 className="App-title">{decodeURIComponent(keyword)}</h3>
     <ListOfGifs gifs={gifs} />
     <div ref={ref} id="visor"></div>

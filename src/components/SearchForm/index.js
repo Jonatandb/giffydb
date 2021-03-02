@@ -3,9 +3,12 @@ import { useLocation } from 'wouter'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
+const LANGUAGES = ['en', 'es', 'fi', 'ja', 'ru']
+
 const ACTIONS = {
     UPDATE_KEYWORD: 'UPDATE_KEYWORD',
     UPDATE_RATING: 'UPDATE_RATING',
+    UPDATE_LANGUAGE: 'UPDATE_LANGUAGE'
 }
 
 const ACTIONS_REDUCERS = {
@@ -16,6 +19,10 @@ const ACTIONS_REDUCERS = {
     [ACTIONS.UPDATE_RATING]: (state, action) => ({
         ...state,
         rating: action.payload
+    }),
+    [ACTIONS.UPDATE_LANGUAGE]: (state, action) => ({
+        ...state,
+        language: action.payload
     })
 }
 
@@ -24,15 +31,16 @@ const reducer = (state, action) => {
     return actionReducer ? actionReducer(state, action) : state
 }
 
-const SearchForm = React.memo(({ initialKeyword = '', initialRating }) => {
+const SearchForm = React.memo(({ initialKeyword = '', initialRating, initialLanguage }) => {
     const [state, dispatch] = useReducer(reducer, {
         keyword: decodeURIComponent(initialKeyword),
-        rating: initialRating || RATINGS[0]
+        rating: initialRating || RATINGS[0],
+        language: initialLanguage || LANGUAGES[0]
     })
     const searchInputRef = useRef()
     const [, pushLocation] = useLocation()
 
-    const { keyword, rating } = state
+    const { keyword, rating, language } = state
 
     const handleSearchChange = useCallback(evt => {
         dispatch({
@@ -48,15 +56,22 @@ const SearchForm = React.memo(({ initialKeyword = '', initialRating }) => {
         })
     }, [])
 
+    const handleLanguageChange = useCallback(evt => {
+        dispatch({
+            type: ACTIONS.UPDATE_LANGUAGE,
+            payload: evt.target.value
+        })
+    }, [])
+
     const handleSumbit = useCallback(evt => {
         evt.preventDefault()
         if (keyword && keyword.trim()) {
-            pushLocation(`/search/${keyword.trim()}/${rating}`)
+            pushLocation(`/search/${keyword.trim()}/${rating}/${language}`)
         } else {
             searchInputRef.current.select()
             searchInputRef.current.focus()
         }
-    }, [keyword, rating, pushLocation])
+    }, [keyword, rating, language, pushLocation])
 
     return (
         <form onSubmit={handleSumbit}>
@@ -71,6 +86,12 @@ const SearchForm = React.memo(({ initialKeyword = '', initialRating }) => {
                 <option disabled>Rating type</option>
                 {
                     RATINGS.map(rating => <option key={rating}>{rating}</option>)
+                }
+            </select>
+            <select value={language} onChange={handleLanguageChange}>
+                <option disabled>Language</option>
+                {
+                    LANGUAGES.map(language => <option key={language}>{language}</option>)
                 }
             </select>
         </form>

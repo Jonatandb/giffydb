@@ -30,10 +30,12 @@ export default function Home() {
       <SearchForm />
       <div className="App-main">
         {
-          !loading && gifs.length > 0 && <div className="App-results">
-            <h3 className="App-title">Última búsqueda</h3>
-            <ListOfGifs gifs={gifs} />
-          </div>
+          !loading && gifs.length > 0 && (
+            <div className="App-results">
+              <h3 className="App-title">Última búsqueda</h3>
+              <ListOfGifs gifs={gifs} />
+            </div>
+          )
         }
         <div className="App-category">
           <TrendingSearches />
