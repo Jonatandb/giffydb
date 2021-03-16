@@ -1,11 +1,4 @@
----
----
----
-
-Proyecto creado siguiendo esta serie de videos -> [Curso gratis de ReactJS 2020 con clases en vivo](https://midu.dev/curso-gratis-react-2020/) ([Lista en Youtube](https://www.youtube.com/playlist?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC)),
-de este grande del desarrollo frontend -> **Midudev** (Miguel Ángel Durán: [Blog](https://midu.dev/), [Youtube](https://www.youtube.com/channel/UC8LeXCWOalN8SxlrPcG-PaQ), [Twitter](https://twitter.com/midudev), [Instagram](https://www.instagram.com/midu.dev/))
-
----
+Proyecto creado siguiendo esta serie de videos -> [Curso gratis de ReactJS 2020 con clases en vivo](https://midu.dev/curso-gratis-react-2020/) ([Lista en Youtube](https://www.youtube.com/playlist?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC)), de este grande del desarrollo frontend -> **Midudev** (Miguel Ángel Durán: [Blog](https://midu.dev/), [Youtube](https://www.youtube.com/channel/UC8LeXCWOalN8SxlrPcG-PaQ), [Twitter](https://twitter.com/midudev), [Instagram](https://www.instagram.com/midu.dev/))
 
 ---
 
@@ -13,7 +6,14 @@ de este grande del desarrollo frontend -> **Midudev** (Miguel Ángel Durán: [Bl
 
 Se trata de un buscador de Gifs que utiliza la API de [GIPHY](https://giphy.com/).
 
+<p align="center">
+    <a href="https://github.com/jonatandb/giffydb">
+        <img src="HomePage_Screenshot.png" alt="GiffyDb | Searching gifs by Jonatandb"/>
+    </a>
+</p>
+
 ---
+
 
 ## Visited sites:
 
